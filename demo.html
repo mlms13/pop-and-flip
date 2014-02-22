@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pop-and-Flip Demo</title>
+        <link rel="stylesheet" href="build/css/flip.css">
+        <style>
+            .popflip-front { background: #ace;}
+            .popflip-back { background: #cea;}
+        </style>
+    </head>
+    <body>
+        <div class="popflip-card">
+            <div class="popflip-front">Front</div>
+            <div class="popflip-back">Back</div>
+        </div>
+
+        <script>
+            var card = document.querySelector('.popflip-card');
+
+            card.addEventListener('click', function (event) {
+                card.classList.toggle('flipped');
+            }, false);
+        </script>
+    </body>
+</html>

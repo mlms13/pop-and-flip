@@ -1,0 +1,30 @@
+.popflip-card {
+    height: 300px;
+    perspective: 800px;
+    position: relative;
+    width: 240px;
+}
+
+.popflip-front,
+.popflip-back {
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    transition: transform 800ms;
+    transform-style: preserve-3d;
+    width: 100%;
+}
+.popflip-front {
+    transform: rotateY(0deg);
+}
+
+.popflip-back {
+    transform: rotateY(-180deg);
+}
+
+.popflip-card.flipped .popflip-front {
+    transform: rotateY(180deg);
+}
+.popflip-card.flipped .popflip-back {
+    transform: rotateY(0deg);
+}

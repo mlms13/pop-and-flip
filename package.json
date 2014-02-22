@@ -1,0 +1,12 @@
+{
+  "name": "pop-and-flip",
+  "description": "A jQuery plugin for popping cards into modal boxes that flip to show the back",
+  "version": "0.0.1",
+  "author": "Michael Martin-Smucker",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-stylus": "0.0.13",
+    "gulp": "~3.5.2",
+    "gulp-autoprefixer": "0.0.6"
+  }
+}
