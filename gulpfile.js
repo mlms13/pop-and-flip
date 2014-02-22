@@ -10,4 +10,8 @@ gulp.task('stylus', function () {
         .pipe(gulp.dest('./build/css'));
 });
 
+gulp.task('watch', ['default'], function () {
+    gulp.watch('styl/**', ['stylus']);
+});
+
 gulp.task('default', ['stylus']);
