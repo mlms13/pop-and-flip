@@ -5,8 +5,25 @@
         <title>Pop-and-Flip Demo</title>
         <link rel="stylesheet" href="build/css/flip.css">
         <style>
+            .popflip-card {
+                min-height: 200px;
+                width: 320px;
+            }
+            .popflip-card.flipped {
+                /* this will need to be resized magically */
+                min-height: 360px;
+            }
             .popflip-front { background: #ace;}
-            .popflip-back { background: #cea;}
+            .popflip-back {
+                background: #cea;
+            }
+            .popflip-card.flipped .popflip-front {
+                background: #000;
+            }
+            .popflip-card.flipped .popflip-back {
+                /* set the natural height on flip */
+                height: 360px;
+            }
         </style>
     </head>
     <body>
