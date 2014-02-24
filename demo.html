@@ -32,12 +32,10 @@
             <div class="popflip-back">Back</div>
         </div>
 
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="build/js/popflip.js"></script>
         <script>
-            var card = document.querySelector('.popflip-card');
-
-            card.addEventListener('click', function (event) {
-                card.classList.toggle('flipped');
-            }, false);
+            $('.popflip-card').popAndFlip();
         </script>
     </body>
 </html>

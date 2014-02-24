@@ -10,8 +10,17 @@ gulp.task('stylus', function () {
         .pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('watch', ['default'], function () {
-    gulp.watch('styl/**', ['stylus']);
+gulp.task('js', function () {
+    var uglify = require('gulp-uglify');
+
+    gulp.src('./js/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('default', ['stylus']);
+gulp.task('watch', ['default'], function () {
+    gulp.watch('styl/**', ['stylus']);
+    gulp.watch('js/**', ['js']);
+});
+
+gulp.task('default', ['stylus', 'js']);
