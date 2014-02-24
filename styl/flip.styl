@@ -1,32 +1,29 @@
-.popflip-card {
+.popflip-card
     // min-height and width should be set somewhere
     // outside of the library, so they can be customized
-    perspective: 800px;
-    position: relative;
-    transition: 800ms;
-}
+    perspective 800px
+    position relative
+    transition 800ms
 
 .popflip-front,
-.popflip-back {
-    backface-visibility: hidden;
-    box-sizing: border-box;
-    height: 100%;
-    position: absolute;
-    transition: 800ms;
-    transform-style: preserve-3d;
-    width: 100%;
-}
-.popflip-front {
-    transform: rotateY(0deg);
-}
+.popflip-back
+    backface-visibility hidden
+    box-sizing border-box
+    height 100%
+    position absolute
+    transition: 800ms
+    transform-style preserve-3d
+    width 100%
 
-.popflip-back {
-    transform: rotateY(-180deg);
-}
+.popflip-front
+    transform rotateY(0deg)
 
-.popflip-card.flipped .popflip-front {
-    transform: rotateY(180deg);
-}
-.popflip-card.flipped .popflip-back {
-    transform: rotateY(0deg);
-}
+.popflip-back
+    transform rotateY(-180deg)
+
+.popflip-card.flipped .popflip-front
+    transform rotateY(180deg)
+
+.popflip-card.flipped .popflip-back
+    transform rotateY(0deg)
+
