@@ -43,7 +43,7 @@
                 $cloned.css({
                     left:  ($(window).width() / 2) - ($cloned.width() / 2) + 'px',
                     top: '50px' // this is completely arbitrary
-                }).addClass('flipped')
+                }).addClass('flipped');
             }, 0);
 
             // set up a handler to un-flip the card

@@ -10,6 +10,15 @@ gulp.task('stylus', function () {
         .pipe(gulp.dest('./build/css'));
 });
 
+gulp.task('lint', function () {
+    var jshint = require('gulp-jshint'),
+        stylish = require('jshint-stylish');
+
+    gulp.src('./js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish));
+});
+
 gulp.task('js', function () {
     var uglify = require('gulp-uglify');
 
@@ -23,4 +32,4 @@ gulp.task('watch', ['default'], function () {
     gulp.watch('js/**', ['js']);
 });
 
-gulp.task('default', ['stylus', 'js']);
+gulp.task('default', ['stylus', 'lint', 'js']);
