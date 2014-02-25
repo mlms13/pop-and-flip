@@ -1,9 +1,29 @@
 (function ($, undefined) {
     var PopAndFlip = function (options) {
-        var $el = options.$original;
+        var self = this;
 
-        $el.on('click', function () {
-            $(this).toggleClass('flipped');
+        this.showBack = function () {
+            var $cloned = options.$original.clone(),
+                position = options.$original.position();
+
+            // position the clone and append it to the body
+            $cloned.css({
+                    'position': 'absolute',
+                    'top': position.top,
+                    'left': position.left
+                }).appendTo('body');
+
+            // hide the original card
+            options.$original.hide();
+
+            // flip the clone
+            window.setTimeout(function () {
+                $cloned.addClass('flipped')
+            }, 0);
+        };
+
+        options.$original.on('click', function () {
+            self.showBack();
         });
     };
 
