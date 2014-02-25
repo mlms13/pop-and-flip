@@ -1,5 +1,28 @@
 (function ($, undefined) {
-    var PopAndFlip = function (options) {
+    var PopAndFlip, utility = {};
+
+    utility.whichTransition = function () {
+        // stolen from Bootstrap and Modernizr, via Stack Overflow
+        // http://stackoverflow.com/a/9090128/388639
+        var t, el, transitions;
+
+        el = document.createElement('fake');
+        transitions = {
+            'transition':'transitionend',
+            'OTransition':'oTransitionEnd',
+            'MozTransition':'transitionend',
+            'WebkitTransition':'webkitTransitionEnd'
+        };
+
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+            }
+        }
+        return false;
+    };
+
+    PopAndFlip = function (options) {
         var self = this;
 
         this.showBack = function () {
