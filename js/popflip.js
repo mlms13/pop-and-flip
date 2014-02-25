@@ -24,11 +24,10 @@
 
     PopAndFlip = function (options) {
         var self = this,
+            position = options.$original.position(),
             $cloned = options.$original.clone();
 
         this.showBack = function () {
-            var position = options.$original.position();
-
             // position the clone and append it to the body
             $cloned.css({
                     'position': 'absolute',
@@ -39,9 +38,12 @@
             // hide the original card
             options.$original.hide();
 
-            // flip the clone
+            // flip and position the clone
             window.setTimeout(function () {
-                $cloned.addClass('flipped')
+                $cloned.css({
+                    left:  ($(window).width() / 2) - ($cloned.width() / 2) + 'px',
+                    top: '50px' // this is completely arbitrary
+                }).addClass('flipped')
             }, 0);
 
             // set up a handler to un-flip the card
@@ -53,8 +55,8 @@
         this.showFront = function () {
             var transitionend = utility.whichTransition();
 
-            // un-flip the card
-            $cloned.removeClass('flipped');
+            // reset the position and un-flip the card
+            $cloned.css(position).removeClass('flipped');
 
             // after the transition ends,
             // show original and remove the clone
