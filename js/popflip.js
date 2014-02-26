@@ -42,13 +42,13 @@
 
         // keep track of the original dimensions before we do any resizing
         dimensions.front = {
-            height: elements.original.$front.height(),
-            width: elements.original.$front.width()
+            height: elements.original.$front.outerHeight(),
+            width: elements.original.$front.outerWidth()
         };
 
         dimensions.back = {
-            height:  elements.original.$back.height(),
-            width: elements.original.$back.width()
+            height: elements.original.$back.outerHeight(),
+            width: elements.original.$back.outerWidth()
         };
 
         this.showBack = function () {
