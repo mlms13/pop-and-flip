@@ -42,11 +42,11 @@
         this.showBack = function () {
             // position the clone and append it to the body
             $cloned.css({
-                'height': dimensions.front.height,
-                'width': dimensions.front.width,
-                'position': 'absolute',
-                'top': position.top,
-                'left': position.left
+                height: dimensions.front.height,
+                width: dimensions.front.width,
+                position: 'absolute',
+                top: position.top,
+                left: position.left
             }).appendTo('body');
 
             // hide the original card
@@ -55,8 +55,8 @@
             // flip and position the clone
             window.setTimeout(function () {
                 $cloned.css({
-                    'height': dimensions.back.height,
-                    'width': dimensions.back.width,
+                    height: dimensions.back.height,
+                    width: dimensions.back.width,
                     left:  ($(window).width() / 2) - (dimensions.back.width / 2) + 'px',
                     top: '50px' // this is completely arbitrary
                 }).addClass('flipped');
