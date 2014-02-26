@@ -60,7 +60,7 @@
 
             // after the transition ends,
             // show original and remove the clone
-            $cloned.on('transitionend', function () {
+            $cloned.on(transitionend, function () {
                 options.$original.show();
                 $cloned.remove();
             });
