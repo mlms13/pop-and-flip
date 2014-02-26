@@ -25,13 +25,25 @@
     PopAndFlip = function (options) {
         var self = this,
             position = options.$original.position(),
+            dimensions = {},
             $cloned = options.$original.clone();
+
+        // keep track of the original dimensions before we do any resizing
+        dimensions.front = {
+            height: options.$original.find('.popflip-front').height(),
+            width: options.$original.find('.popflip-front').width()
+        };
+
+        dimensions.back = {
+            height: options.$original.find('.popflip-back').height(),
+            width: options.$original.find('.popflip-back').width()
+        };
 
         this.showBack = function () {
             // position the clone and append it to the body
             $cloned.css({
-                'min-height': options.$original.find('.popflip-front').height(),
-                'min-width': options.$original.find('.popflip-front').width(),
+                'height': dimensions.front.height,
+                'width': dimensions.front.width,
                 'position': 'absolute',
                 'top': position.top,
                 'left': position.left
@@ -43,7 +55,9 @@
             // flip and position the clone
             window.setTimeout(function () {
                 $cloned.css({
-                    left:  ($(window).width() / 2) - ($cloned.width() / 2) + 'px',
+                    'height': dimensions.back.height,
+                    'width': dimensions.back.width,
+                    left:  ($(window).width() / 2) - (dimensions.back.width / 2) + 'px',
                     top: '50px' // this is completely arbitrary
                 }).addClass('flipped');
             }, 0);
