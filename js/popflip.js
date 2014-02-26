@@ -26,17 +26,29 @@
         var self = this,
             position = options.$original.position(),
             dimensions = {},
+            elements = {},
             $cloned = options.$original.clone();
+
+        // cache the elements so we don't have to keep doing .find()
+        elements.original = {
+            $front: options.$original.find('.popflip-front'),
+            $back: options.$original.find('.popflip-back')
+        };
+
+        elements.cloned = {
+            // not needed yet: $front: $cloned.find('.popflip-front')
+            $back: $cloned.find('.popflip-back')
+        };
 
         // keep track of the original dimensions before we do any resizing
         dimensions.front = {
-            height: options.$original.find('.popflip-front').height(),
-            width: options.$original.find('.popflip-front').width()
+            height: elements.original.$front.height(),
+            width: elements.original.$front.width()
         };
 
         dimensions.back = {
-            height: options.$original.find('.popflip-back').height(),
-            width: options.$original.find('.popflip-back').width()
+            height:  elements.original.$back.height(),
+            width: elements.original.$back.width()
         };
 
         this.showBack = function () {
@@ -63,7 +75,7 @@
             }, 0);
 
             // set up a handler to un-flip the card
-            $cloned.find('.popflip-back').on('click', function () {
+            elements.cloned.$back.on('click', function () {
                 self.showFront();
             });
         };
