@@ -21,6 +21,11 @@
 .popflip-back
     transform rotateY(-180deg)
 
+// a dynamically-created element for scaling the content
+.popflip-back-inner
+    transition transform 2800ms
+    transform-origin 0 0
+
 .popflip-card.flipped .popflip-front
     transform rotateY(180deg)
 

@@ -40,6 +40,13 @@
             $back: $cloned.find('.popflip-back')
         };
 
+        // wrapp the $back content and store a reference to the wrapper
+        elements.cloned.$backInner = elements.cloned.$back
+            .wrapInner('<div class="popflip-back-inner" />').children()
+            // the $backInner needs to be set to the final width of $back's content
+            // so we can't use our stored (outer) width
+            .width(elements.original.$back.width());
+
         // keep track of the original dimensions before we do any resizing
         dimensions.front = {
             height: elements.original.$front.outerHeight(),
@@ -50,6 +57,9 @@
             height: elements.original.$back.outerHeight(),
             width: elements.original.$back.outerWidth()
         };
+
+        // keep track of the factor to scale between front and back
+        dimensions.scaleFactor = dimensions.front.width / dimensions.back.width;
 
         this.showBack = function () {
             // position the clone and append it to the body
@@ -64,7 +74,8 @@
             // hide the original card
             options.$original.hide();
 
-            // scale the $back so it fits inside its parent
+            // size down the $back and scale its content so it fits in the parent
+            elements.cloned.$backInner.css('transform', 'scale(' + dimensions.scaleFactor + ')');
             elements.cloned.$back.css('width', dimensions.front.width);
 
             // after the element has been added to the document
@@ -79,6 +90,7 @@
 
                 // scale the back side up to its full size
                 elements.cloned.$back.css('width', dimensions.back.width);
+                elements.cloned.$backInner.css('transform', 'scale(1)');
             }, 0);
 
             // set up a handler to un-flip the card
@@ -100,6 +112,7 @@
             }).removeClass('flipped');
 
             // transition back's width to match front
+            elements.cloned.$backInner.css('transform', 'scale(' + dimensions.scaleFactor + ')');
             elements.cloned.$back.css('width', dimensions.front.width);
 
             // after the transition ends,
