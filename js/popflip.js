@@ -71,8 +71,14 @@
         this.showFront = function () {
             var transitionend = utility.whichTransition();
 
-            // reset the position and un-flip the card
-            $cloned.css(position).removeClass('flipped');
+            // reset the position and original dimensions,
+            // then and un-flip the card
+            $cloned.css({
+                height: dimensions.front.height,
+                width: dimensions.front.width,
+                left: position.left,
+                top: position.top
+            }).removeClass('flipped');
 
             // after the transition ends,
             // show original and remove the clone
