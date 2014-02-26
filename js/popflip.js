@@ -64,14 +64,21 @@
             // hide the original card
             options.$original.hide();
 
-            // flip and position the clone
+            // scale the $back so it fits inside its parent
+            elements.cloned.$back.css('width', dimensions.front.width);
+
+            // after the element has been added to the document
             window.setTimeout(function () {
+                // flip and position the clone
                 $cloned.css({
                     height: dimensions.back.height,
                     width: dimensions.back.width,
                     left:  ($(window).width() / 2) - (dimensions.back.width / 2) + 'px',
                     top: '50px' // this is completely arbitrary
                 }).addClass('flipped');
+
+                // scale the back side up to its full size
+                elements.cloned.$back.css('width', dimensions.back.width);
             }, 0);
 
             // set up a handler to un-flip the card
@@ -91,6 +98,9 @@
                 left: position.left,
                 top: position.top
             }).removeClass('flipped');
+
+            // transition back's width to match front
+            elements.cloned.$back.css('width', dimensions.front.width);
 
             // after the transition ends,
             // show original and remove the clone
