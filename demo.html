@@ -6,30 +6,26 @@
         <link rel="stylesheet" href="build/css/flip.css">
         <style>
             .popflip-card {
-                min-height: 200px;
-                width: 320px;
+                max-width: 300px;
+                padding: 30px;
             }
-            .popflip-card.flipped {
-                /* this will need to be resized magically */
-                min-height: 360px;
+            .flipped .popflip-front {
+                opacity: 0;
             }
-            .popflip-front { background: #ace;}
-            .popflip-back {
-                background: #cea;
-            }
-            .popflip-card.flipped .popflip-front {
-                background: #000;
-            }
-            .popflip-card.flipped .popflip-back {
-                /* set the natural height on flip */
-                height: 360px;
-            }
+            .popflip-back { background: #cea; }
         </style>
     </head>
     <body>
         <div class="popflip-card">
-            <div class="popflip-front">Front</div>
-            <div class="popflip-back">Back</div>
+            <div class="popflip-front">
+                <img src="http://placekitten.com/g/300/200" alt="Kitteh!">
+            </div>
+            <div class="popflip-back">
+                <h2>This is a kitten!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>Voluptates, sint, eligendi tempora deserunt error nemo accusamus impedit numquam illo exercitationem officiis natus placeat tempore voluptatum rerum nihil non maxime qui.</p>
+                <p>Quidem, blanditiis, magnam, fugit, sit excepturi perferendis beatae illum vero accusantium suscipit eveniet optio illo eum aliquid nostrum consequuntur aspernatur autem in?</p>
+            </div>
         </div>
 
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

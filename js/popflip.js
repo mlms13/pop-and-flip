@@ -30,10 +30,12 @@
         this.showBack = function () {
             // position the clone and append it to the body
             $cloned.css({
-                    'position': 'absolute',
-                    'top': position.top,
-                    'left': position.left
-                }).appendTo('body');
+                'min-height': options.$original.find('.popflip-front').height(),
+                'min-width': options.$original.find('.popflip-front').width(),
+                'position': 'absolute',
+                'top': position.top,
+                'left': position.left
+            }).appendTo('body');
 
             // hide the original card
             options.$original.hide();
